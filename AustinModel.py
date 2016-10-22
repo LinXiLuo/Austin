@@ -16,4 +16,4 @@ def classifyFile(myFile):
 # for classifier in classifiers:
 #     classify(classifier)
 #classify('svm')
-print type(classify('svm','Austin/me.wav'))
+classify('svm', 'Austin/a5.wav')
