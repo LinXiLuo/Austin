@@ -1,7 +1,7 @@
 from pyAudioAnalysis import audioTrainTest as aT
 
 myList = ['Austin/a','Austin/b','Austin/c','Austin/d','Austin/e','Austin/f','Austin/g','Austin/h','Austin/i','Austin/j','Austin/k','Austin/l','Austin/m','Austin/have','Austin/in','Austin/that','Austin/the',"Austin/toNew",'Austin/u','Austin/n']
-#aT.featureAndTrain(myList, 1.0, 1.0, aT.shortTermWindow, aT.shortTermStep, 'svm', 'svm', False)
+aT.featureAndTrain(myList, 1.0, 1.0, aT.shortTermWindow, aT.shortTermStep, 'svm', 'svm', False)
 def classify(classifier,myFile):
 
     print aT.fileClassification(myFile,classifier,classifier)
