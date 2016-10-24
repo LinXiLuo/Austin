@@ -1,7 +1,8 @@
 from pyAudioAnalysis import audioTrainTest as aT
 
 def classify(classifier,myFile):
-    aT.featureAndTrain(["Austin/a","Austin/f","Austin/h","Austin/u","Austin/c", "Austin/n","Austin/the","Austin/me"], 1.0, 1.0, aT.shortTermWindow, aT.shortTermStep, classifier, classifier, False)
+    myList = ['Austin/a',"Austin/and","Austin/be","Austin/c","Austin/f","Austin/h","Austin/have","Austin/in","Austin/n","Austin/that","Austin/the","Austin/toNew","Austin/u"]
+    aT.featureAndTrain(myList, 1.0, 1.0, aT.shortTermWindow, aT.shortTermStep, classifier, classifier, False)
     print aT.fileClassification(myFile,classifier,classifier)
     # print aT.fileClassification("Austin/a1.wav", classifier, classifier)
     # print aT.fileClassification("Austin/f1.wav", classifier,classifier)
@@ -16,4 +17,4 @@ def classifyFile(myFile):
 # for classifier in classifiers:
 #     classify(classifier)
 #classify('svm')
-classify('svm', 'Austin/a5.wav')
+classify('svm', 'Austin/and.wav')
