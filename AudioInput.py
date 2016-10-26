@@ -9,6 +9,7 @@ import time
 import math
 import AustinModelSecond
 
+
 LANG_CODE = 'en-US'  # Language to use
 
 GOOGLE_SPEECH_URL = 'https://www.google.com/speech-api/v1/recognize?xjerr=1&client=chromium&pfilter=2&lang=%s&maxresults=6' % (LANG_CODE)
@@ -77,7 +78,7 @@ def listen_for_speech(threshold, num_phrases):
                     rate=RATE,
                     input=True,
                     frames_per_buffer=CHUNK)
-
+    finalWord = ""
     print "* Listening mic. "
     audio2send = []
     cur_data = ''  # current chunk  of audio data
@@ -102,7 +103,8 @@ def listen_for_speech(threshold, num_phrases):
             print "Finished"
             # The limit was reached, finish capture and deliver.
             filename = save_speech(list(prev_audio) + audio2send, p)
-            print AustinModelSecond.classify('svm',filename)
+            finalWord = finalWord+AustinModelSecond.classify('svm',filename)
+            print finalWord
             # Send file to Google and get response
             #r = stt_google_wav(filename)
             if num_phrases == -1:
