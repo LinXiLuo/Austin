@@ -3,7 +3,7 @@ from pyAudioAnalysis import audioTrainTest as aT
 #load training data
 myList = ['Austin/a','Austin/b','Austin/c','Austin/d','Austin/e','Austin/f','Austin/g','Austin/h','Austin/i','Austin/j','Austin/k',
           'Austin/l','Austin/m','Austin/have','Austin/in','Austin/that','Austin/the',"Austin/toNew",'Austin/u','Austin/n']
-aT.featureAndTrain(myList, 1.0, 1.0, aT.shortTermWindow, aT.shortTermStep, 'svm', 'svm', False)
+#aT.featureAndTrain(myList, 1.0, 1.0, aT.shortTermWindow, aT.shortTermStep, 'svm', 'svm', False)
 
 #classify test data
 def classify(classifier,myFile):
@@ -11,7 +11,7 @@ def classify(classifier,myFile):
     print "max index:",result
     print "probabilities",p
     print "class names:",classNames
-    return classNames[result]
+    return classNames[int(result)]
     #print aT.fileClassification(myFile,classifier,classifier)
 
     # print aT.fileClassification("Austin/a1.wav", classifier, classifier)
@@ -41,10 +41,10 @@ correctItems = 0
 incorrectItems = 0
 for test in listOfThings:
     lab = classify('svm',test)
-    if lab == "Austin/"+ labels[i]:
+    if lab == labels[i]:
         correctItems = correctItems + 1
     else:
         incorrectItems = incorrectItems + 1
     i = i + 1
 accuracy = correctItems*100.0 / (correctItems+incorrectItems)
-print "accuracy", accuracy
+print "accuracy:", accuracy,"%"
